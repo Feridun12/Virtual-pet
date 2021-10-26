@@ -37,6 +37,11 @@ describe('walk', () => {
     
         expect(pet.fitness).toEqual(10);
       });
+      it('throws an error if the pet is not alive', () => {
+        const pet = new Pet('Fido');
+        pet.age = 30;
+        expect(() => pet.walk()).toThrow('Your pet is no longer alive :(');
+      });
     });
     describe('checkup tests', () => {
         it('if the pet fitness level is below 3 or less return a string', () => {
@@ -62,3 +67,20 @@ describe('walk', () => {
             expect(pet.checkUp()).toBe('I feel great!');
         });
     })
+    describe('feed', () => {
+      
+        it('throws an error if the pet is not alive', () => {
+            const pet = new Pet('Fido');
+      
+            pet.age = 30;
+      
+            expect(() => pet.feed()).toThrow('Your pet is no longer alive :(');
+          });
+        });
+    describe('growUp function', () => {
+        it('throws an error if the pet is not alive', () => {
+            const pet = new Pet('Fido');
+            pet.fitness = -2;
+            expect(() => pet.growUp()).toThrow('Your pet is no longer alive :(');
+        });
+    });
